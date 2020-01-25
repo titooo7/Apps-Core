@@ -14,7 +14,7 @@
       set_fact:
         pgrole: 'jellyfin'
         intport: '8096'
-        extport: '9096'
+        extport: '8096'
         image: 'jellyfin/jellyfin:latest'
 
     # CORE (MANDATORY) ############################################################
@@ -72,6 +72,7 @@
         image: '{{image}}'
         pull: yes
         user: 1000:1000
+        network_mode: "host"
         published_ports:
           - '{{ports.stdout}}{{extport}}:{{intport}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
