@@ -70,12 +70,9 @@
         image: '{{image}}'
         pull: yes
         user: 1000:1000
-        network_mode: 'host'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
         volumes: '{{pg_volumes}}'
-        env: '{{pg_env}}'
-        restart_policy: unless-stopped
-        expose: '8096'
+        network_mode: 'host'
         state: started
         labels: '{{pg_labels}}'
 
