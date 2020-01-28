@@ -13,8 +13,6 @@
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'jellyfin'
-        intport: '8096'
-        extport: '8096'
         image: 'jellyfin/jellyfin:latest'
 
     # CORE (MANDATORY) ############################################################
@@ -30,7 +28,7 @@
     - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.enable: 'true'
+          traefik.enable: 'false'
           traefik.port: '{{intport}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}}{{tldset}}{{cname}}'
           traefik.frontend.headers.SSLHost: '{{domain.stdout}}'
