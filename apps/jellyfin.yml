@@ -76,11 +76,6 @@
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: unless-stopped
-        networks:
-          - name: plexguide
-            aliases:
-              - '{{pgrole}}'
-        expose: '8096'
         network_mode: 'host'
         state: started
         labels: '{{pg_labels}}'
